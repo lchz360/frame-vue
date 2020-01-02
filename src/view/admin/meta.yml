@@ -1,0 +1,16 @@
+index:
+  breadcrumb: 
+    - title: 管理员设置
+  title: 管理员设置
+add:
+  breadcrumb: 
+    - title: 管理员设置
+      to: /admin
+    - title: 添加
+  title: 添加管理员
+edit:
+  breadcrumb: 
+    - title: 管理员设置
+      to: /admin
+    - title: 修改
+  title: 修改管理员

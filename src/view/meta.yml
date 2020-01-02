@@ -1,0 +1,10 @@
+home:
+  title: 首页
+join-page:
+  title: QQ群
+  breadcrumb:
+    - title: QQ群
+      to: /join
+      name: Join-page
+login:
+  notInMain: true

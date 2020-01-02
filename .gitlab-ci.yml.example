@@ -1,0 +1,45 @@
+stages:
+  - install_deps
+  - build_prod
+  - deploy_prod
+
+cache:
+  key: ${CI_BUILD_REF_NAME}
+  paths:
+    - node_modules
+    - dist
+
+# 安装构建依赖
+install_deps_job:
+  stage: install_deps
+  only:
+    - master
+  script:
+    - npm i
+  tags:
+    - 执行器tag
+
+# 打包新文件
+build_prod_job:
+  stage: build_prod
+  only:
+    - master
+  script:
+    - rm -rf ./dist
+    - npm run build
+  tags:
+    - 执行器tag
+
+# 登录项目部署服务器，移除旧版本项目文件，最后将打包好的文件拷贝过去
+deploy_prod_job:
+  stage: deploy_prod
+  only:
+    - master
+  script:
+    - cd dist
+    #删除之前的文件
+    - sudo -u www rm -rf 网站目录下，如果文件夹重名需注意不要删除多了
+    #复制打包的文件到网站目录
+    - sudo -u www cp -r ./* 网站目录
+  tags:
+    - 执行器tag
